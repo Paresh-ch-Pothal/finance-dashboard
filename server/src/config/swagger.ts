@@ -15,7 +15,7 @@ const options: swaggerJsdoc.Options = {
         description: "Development Server",
       },
       {
-        url: "https://finance-dashboard-lyart-beta.vercel.app",
+        url: "https://finance-dashboard-awg3.onrender.com",
         description: "Production Server",
       }
     ],
