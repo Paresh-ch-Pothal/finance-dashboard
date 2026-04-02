@@ -28,7 +28,7 @@ router.use(protect);
  *         name: type
  *         schema:
  *           type: string
- *           enum: [income, expense]
+ *           enum: [Income, Expense]
  *         description: Filter by record type
  *       - in: query
  *         name: category
@@ -94,7 +94,7 @@ router.get("/getRecords", GeneralLimiter, authorize(["Viewer", "Analyst", "Admin
  * @swagger
  * /record/summary:
  *   get:
- *     summary: Get dashboard summary - total income, expenses, net balance, category totals and recent activity
+ *     summary: Get dashboard summary - total Income, Expenses, net balance, category totals and recent activity
  *     tags: [Records]
  *     security:
  *       - bearerAuth: []
@@ -148,7 +148,7 @@ router.get("/summary", GeneralLimiter, authorize(["Viewer", "Analyst", "Admin"])
  * @swagger
  * /record/trends:
  *   get:
- *     summary: Get monthly income and expense trends (Analyst and Admin only)
+ *     summary: Get monthly Income and Expense trends (Analyst and Admin only)
  *     tags: [Records]
  *     security:
  *       - bearerAuth: []
@@ -173,7 +173,7 @@ router.get("/summary", GeneralLimiter, authorize(["Viewer", "Analyst", "Admin"])
  *                             example: 1
  *                           type:
  *                             type: string
- *                             example: income
+ *                             example: Income
  *                       total:
  *                         type: number
  *                         example: 25000
@@ -209,8 +209,8 @@ router.get("/trends", GeneralLimiter, authorize(["Analyst", "Admin"]), getTrends
  *                 example: 5000
  *               type:
  *                 type: string
- *                 enum: [income, expense]
- *                 example: income
+ *                 enum: [Income, Expense]
+ *                 example: Income
  *               category:
  *                 type: string
  *                 example: Salary
@@ -236,7 +236,7 @@ router.get("/trends", GeneralLimiter, authorize(["Analyst", "Admin"]), getTrends
 router.post("/createRecord", GeneralLimiter, authorize(["Admin"]),
   [
     body('amount').isNumeric().withMessage('Amount must be a number'),
-    body('type').isIn(['income', 'expense']).withMessage('Type must be income or expense'),
+    body('type').isIn(['Income', 'Expense']).withMessage('Type must be Income or Expense'),
     body('category').notEmpty().withMessage('Category is required'),
     body('date').isISO8601().toDate().withMessage('Date must be valid'),
   ],
@@ -245,7 +245,7 @@ router.post("/createRecord", GeneralLimiter, authorize(["Admin"]),
 
 /**
 * @swagger
-* /records/updateRecord/{id}:
+* /record/updateRecord/{id}:
 *   patch:
 *     summary: Update an existing financial record (Admin only)
 *     tags: [Records]
@@ -270,7 +270,7 @@ router.post("/createRecord", GeneralLimiter, authorize(["Admin"]),
 *                 example: 6000
 *               type:
 *                 type: string
-*                 enum: [income, expense]
+*                 enum: [Income, Expense]
 *               category:
 *                 type: string
 *                 example: Freelance
@@ -299,7 +299,7 @@ router.post("/createRecord", GeneralLimiter, authorize(["Admin"]),
 router.patch("/updateRecord/:id", GeneralLimiter, authorize(["Admin"]),
   [
     body('amount').optional().isNumeric().withMessage('Amount must be a number'),
-    body('type').optional().isIn(['income', 'expense']).withMessage('Type must be income or expense'),
+    body('type').optional().isIn(['Income', 'Expense']).withMessage('Type must be Income or Expense'),
     body('category').optional().notEmpty().withMessage('Category cannot be empty'),
     body('date').optional().isISO8601().toDate().withMessage('Date must be valid'),
   ],
@@ -307,7 +307,7 @@ router.patch("/updateRecord/:id", GeneralLimiter, authorize(["Admin"]),
 
 /**
  * @swagger
- * /api/records/deleteRecord/{id}:
+ * /record/deleteRecord/{id}:
  *   delete:
  *     summary: Delete a financial record (Admin only)
  *     tags: [Records]

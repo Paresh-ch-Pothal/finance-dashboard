@@ -39,11 +39,11 @@ export const getRecords = async (req: AuthRequest, res: Response) => {
 export const getSummary = async (req: AuthRequest, res: Response) => {
   try {
     const incomeAgg = await recordModel.aggregate([
-      { $match: { type: "income" } },
+      { $match: { type: "Income" } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
     const expenseAgg = await recordModel.aggregate([
-      { $match: { type: "expense" } },
+      { $match: { type: "Expense" } },
       { $group: { _id: null, total: { $sum: "$amount" } } },
     ]);
 
