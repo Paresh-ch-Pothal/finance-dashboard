@@ -1,4 +1,5 @@
 import swaggerJsdoc from "swagger-jsdoc";
+import path from "path";
 
 const options: swaggerJsdoc.Options = {
   definition: {
@@ -29,7 +30,11 @@ const options: swaggerJsdoc.Options = {
     },
     security: [{ bearerAuth: [] }],
   },
-  apis: ["./src/routes/*.ts", "./dist/routes/*.js", "./routes/*.js"],
+  apis: [
+    path.join(process.cwd(), "src/routes/*.ts"),
+    path.join(process.cwd(), "src/routes/*.js"),
+    path.join(process.cwd(), "routes/*.js"), // Some Vercel builds flatten the 'src' folder
+  ],
 };
 
 export const swaggerSpec = swaggerJsdoc(options);
