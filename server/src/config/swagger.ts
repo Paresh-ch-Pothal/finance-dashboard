@@ -13,6 +13,10 @@ const options: swaggerJsdoc.Options = {
         url: "http://localhost:5000",
         description: "Development Server",
       },
+      {
+        url: "https://finance-dashboard-lyart-beta.vercel.app",
+        description: "Production Server",
+      }
     ],
     components: {
       securitySchemes: {
