@@ -47,7 +47,7 @@ router.use(protect);
  *         schema:
  *           type: string
  *           format: date
- *           example: 2024-12-31
+ *           example: 2026-12-31
  *         description: End date filter
  *       - in: query
  *         name: page
@@ -217,7 +217,7 @@ router.get("/trends", GeneralLimiter, authorize(["Analyst", "Admin"]), getTrends
  *               date:
  *                 type: string
  *                 format: date
- *                 example: 2024-01-15
+ *                 example: 2026-12-15
  *               description:
  *                 type: string
  *                 example: Monthly salary credit
@@ -277,7 +277,7 @@ router.post("/createRecord", GeneralLimiter, authorize(["Admin"]),
 *               date:
 *                 type: string
 *                 format: date
-*                 example: 2024-02-01
+*                 example: 2026-12-15
 *               description:
 *                 type: string
 *                 example: Updated description
