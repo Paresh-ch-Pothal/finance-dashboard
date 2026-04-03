@@ -30,17 +30,17 @@ const router = express.Router();
  *             properties:
  *               name:
  *                 type: string
- *                 example: John Doe
+ *                 example: Admin User
  *               email:
  *                 type: string
- *                 example: john@example.com
+ *                 example: admin@example.com
  *               password:
  *                 type: string
- *                 example: password123
+ *                 example: admin123
  *               role:
  *                 type: string
  *                 enum: [Viewer, Analyst, Admin]
- *                 example: Viewer
+ *                 example: Admin
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -91,10 +91,10 @@ router.post('/register', loginLimiter, [
  *             properties:
  *               email:
  *                 type: string
- *                 example: john@example.com
+ *                 example: admin@example.com
  *               password:
  *                 type: string
- *                 example: password123
+ *                 example: admin123
  *     responses:
  *       200:
  *         description: Login successful
