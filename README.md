@@ -98,7 +98,7 @@ JWT_SECRET=<your-jwt-secret-key>
 Populate the database with initial users and records:
 
 ```bash
-ts-node src/seed/seedDB.ts
+ts-node src/seedDB.ts
 ```
 
 ### 5. Start the Development Server
